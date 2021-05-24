@@ -1,0 +1,52 @@
+<p>songs works!</p>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table matTableExporter [dataSource]="dataSource" matSort #exporter="matTableExporter">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="danceability">
+      <mat-header-cell *matHeaderCellDef> Danceability </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.danceability}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="energy">
+      <mat-header-cell *matHeaderCellDef> Energy </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.energy}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mode" >
+      <mat-header-cell *matHeaderCellDef> Mode </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mode}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="acousticness">
+      <mat-header-cell *matHeaderCellDef> Acousticness </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.acousticness}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  
+</div>
+   
+<mat-paginator   #paginator 
+[pageSize]="10"
+[pageSizeOptions]="[10, 20, 30, 100]">
+</mat-paginator>
+<div><button mat-raised-button (click)="exporter.exportTable('csv')">Export to Csv</button> </div>
+
+
+  
